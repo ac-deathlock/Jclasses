@@ -1,5 +1,5 @@
 import apisauce from 'apisauce';
-const joshiClasses=(baseURL="http://10.42.0.1:8080/") => apisauce.create({
+const joshiClasses=(baseURL="http://35.188.94.142/") => apisauce.create({
     baseURL,
     timeout: 10000
 });
