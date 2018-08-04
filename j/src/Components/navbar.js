@@ -24,9 +24,9 @@ class Navbar extends Component {
                                 Courses
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a className="dropdown-item" href="/subjects">Physics</a>
-                                <a className="dropdown-item" href="/subjects">Chemistry </a>
-                                <a className="dropdown-item" href="/subjects">Mathematics</a>
+                                <a className="dropdown-item" href="#/subjects">Physics</a>
+                                <a className="dropdown-item" href="#/subjects">Chemistry </a>
+                                <a className="dropdown-item" href="#/subjects">Mathematics</a>
                             </div>
                         </li>
                         <li className="nav-item dropdown">

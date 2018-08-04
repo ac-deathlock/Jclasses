@@ -2,10 +2,9 @@ var conn = require('../../conn');
 var express = require('express');
 var router = express.Router();
 
-
-module.exports.sget = function(req, res){
-    var c_id = req.params.c_id;
-    conn.query('SELECT * FROM study WHERE c_id = ?',c_id,function(er, result){
+module.exports.video_fetch = function(req, res){
+    var topic_id = req.body.topic_id;
+    conn.query('SELECT * FROM video WHERE video_id = ?',topic_id,function(er, result){
         if(er){
             throw er;
             res.status(400);
@@ -16,23 +15,22 @@ module.exports.sget = function(req, res){
             var data = [];
             result.forEach(function(row){
                 var tmp = {};
-                tmp['heading'] = row['heading'];
-                tmp['description'] = row['description'];
+                tmp['name'] = row['name'];
+                tmp['url'] = row['url'];
                 data.push(tmp);
             });
             res.status(200);
             res.json({"message":data});
         }
     });
-};
+}
 
-module.exports.topic_put = function(req, res){
-    var heading = req.body.heading;
-    var description = req.body.description;
-    var subject= req.body.subject;
-    var c_id = req.body.c_id;
-    var q = [heading, description,subject,c_id];
-    conn.query('INSERT INTO study (heading, description, s_id, c_id) VALUES (?, ?, ?, ?)',q, function(er, result){
+module.exports.video_add = function(req, res){
+    var topic_id = req.body.topic_id;
+    var name = req.body.name;
+    var url = req.bosy.url;
+    var q = [name,topic_id,url];
+    conn.query('INSERT INTO video (name, topic_id, url) VALUES (?, ?, ?, ?)',q, function(err,res){
         if(er){
             throw er;
             res.status(400);
@@ -43,5 +41,4 @@ module.exports.topic_put = function(req, res){
             res.json({"message":"db updated"});
         }
     });
-};
-
+}
